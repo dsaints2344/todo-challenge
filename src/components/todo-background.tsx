@@ -1,5 +1,7 @@
 import bgDesktopDark from '../assets/bg-desktop-dark.jpg';
 import bgMobileDark from '../assets/bg-mobile-dark.jpg';
+import bgDesktopLight from '../assets/bg-desktop-light.jpg';
+import bgMobileLight from '../assets/bg-mobile-light.jpg';
 import { Show, Box, Flex } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
@@ -12,7 +14,7 @@ const TodoBackground = ({ children }: Props) => {
     <>
       <Show below="sm">
         <Flex
-          backgroundImage={bgMobileDark}
+          backgroundImage={bgMobileLight}
           direction="column"
           alignItems="center"
           backgroundRepeat="round"
@@ -32,7 +34,11 @@ const TodoBackground = ({ children }: Props) => {
         </Flex>
       </Show>
       <Show above="sm">
-        <Flex backgroundImage={bgDesktopDark} backgroundRepeat="round" h="40vh">
+        <Flex
+          backgroundImage={bgDesktopLight}
+          backgroundRepeat="round"
+          h="40vh"
+        >
           <Box
             left="0vh"
             right="0vh"

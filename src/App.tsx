@@ -1,12 +1,14 @@
 import AddItem from './components/add-item';
 import Layout from './layout/layout';
-import { Box } from '@chakra-ui/react';
+import { Box, Stack } from '@chakra-ui/react';
 
 const App = () => {
   return (
     <Box>
       <Layout>
-        <AddItem />
+        <Stack gap="8">
+          <AddItem />
+        </Stack>
       </Layout>
     </Box>
   );
