@@ -1,4 +1,3 @@
-import { Box } from '@chakra-ui/react';
 import TodoBackground from '../components/todo-background';
 import { ReactNode } from 'react';
 
@@ -9,8 +8,7 @@ type Props = {
 const Layout = ({ children }: Props) => {
   return (
     <>
-      <TodoBackground />
-      <Box mt="20">{children}</Box>
+      <TodoBackground>{children}</TodoBackground>
     </>
   );
 };

@@ -1,15 +1,47 @@
 import bgDesktopDark from '../assets/bg-desktop-dark.jpg';
-import bgMobileDark from '../assets/bg-mobile-light.jpg';
-import { Show, Image } from '@chakra-ui/react';
+import bgMobileDark from '../assets/bg-mobile-dark.jpg';
+import { Show, Box } from '@chakra-ui/react';
+import { ReactNode } from 'react';
 
-const TodoBackground = () => {
+type Props = {
+  children?: ReactNode;
+};
+
+const TodoBackground = ({ children }: Props) => {
   return (
     <>
-      <Show below="md">
-        <Image src={bgMobileDark} w="100%" />
+      <Show below="sm">
+        <Box backgroundImage={bgMobileDark} backgroundRepeat="round" h="25vh">
+          <Box
+            left="0vh"
+            right="0vh"
+            position="absolute"
+            bottom="6vh"
+            ms="4vh"
+            me="4vh"
+          >
+            {children}
+          </Box>
+        </Box>
       </Show>
-      <Show above="md">
-        <Image src={bgDesktopDark} w="100%" />
+      <Show above="sm">
+        <Box
+          backgroundImage={bgDesktopDark}
+          backgroundRepeat="round"
+          h="40vh"
+          w="100%"
+        >
+          <Box
+            left="0vh"
+            right="0vh"
+            position="absolute"
+            bottom="6vh"
+            ms="4vh"
+            me="4vh"
+          >
+            {children}
+          </Box>
+        </Box>
       </Show>
     </>
   );

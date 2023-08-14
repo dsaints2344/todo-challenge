@@ -1,9 +1,12 @@
+import AddItem from './components/add-item';
 import Layout from './layout/layout';
 
 const App = () => {
   return (
     <>
-      <Layout></Layout>
+      <Layout>
+        <AddItem />
+      </Layout>
     </>
   );
 };
