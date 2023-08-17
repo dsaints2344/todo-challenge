@@ -1,9 +1,10 @@
-import bgDesktopDark from '../assets/bg-desktop-dark.jpg';
-import bgMobileDark from '../assets/bg-mobile-dark.jpg';
-import bgDesktopLight from '../assets/bg-desktop-light.jpg';
-import bgMobileLight from '../assets/bg-mobile-light.jpg';
-import { Show, Box, Flex } from '@chakra-ui/react';
-import { ReactNode } from 'react';
+import bgDesktopDark from "../assets/bg-desktop-dark.jpg";
+import bgMobileDark from "../assets/bg-mobile-dark.jpg";
+import bgDesktopLight from "../assets/bg-desktop-light.jpg";
+import bgMobileLight from "../assets/bg-mobile-light.jpg";
+import { Show, Box, Flex, Text, HStack, IconButton } from "@chakra-ui/react";
+import { ReactNode } from "react";
+import { MoonIcon } from "@chakra-ui/icons";
 
 type Props = {
   children?: ReactNode;
@@ -39,6 +40,19 @@ const TodoBackground = ({ children }: Props) => {
           backgroundRepeat="round"
           h="40vh"
         >
+          <HStack
+            justifyContent="center"
+            pb="100"
+            alignItems="center"
+            spacing="19%"
+            w="100%"
+          >
+            <Text fontSize="60" color="white" fontWeight="bold">
+              TODO
+            </Text>
+
+            <IconButton aria-label="dark-mode" icon={<MoonIcon />} />
+          </HStack>
           <Box
             left="0vh"
             right="0vh"
