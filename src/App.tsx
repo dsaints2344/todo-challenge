@@ -1,6 +1,7 @@
-import AddItem from './components/add-item';
-import Layout from './layout/layout';
-import { Box, Stack } from '@chakra-ui/react';
+import AddItem from "./components/add-item";
+import ItemList from "./components/item-list";
+import Layout from "./layout/layout";
+import { Box, Stack } from "@chakra-ui/react";
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <Layout>
         <Stack gap="8">
           <AddItem />
+          <ItemList />
         </Stack>
       </Layout>
     </Box>
