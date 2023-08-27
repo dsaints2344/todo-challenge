@@ -5,7 +5,7 @@ import { Box, Stack } from "@chakra-ui/react";
 
 const App = () => {
   return (
-    <Box>
+    <Box w="100%">
       <Layout>
         <Stack gap="8">
           <AddItem />
