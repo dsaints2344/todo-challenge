@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { ITodo, ITodoStore } from "../types/todo";
 import { v4 as uuidv4 } from "uuid";
-
 export const todoStore = create<ITodoStore>((set) => ({
   todos: [],
   addTodo: (description: string) => {
@@ -26,12 +25,14 @@ export const todoStore = create<ITodoStore>((set) => ({
   },
 
   toogleCompleteTodo: (id: string) => {
-    set((state) => ({
-      todos: state.todos.map((t) => {
+    set(({ todos }) => ({
+      todos: todos.map((t) => {
         if (t.id === id) {
-          t.isCompleted = !t.isCompleted;
+          const newTodo = { ...t, isCompleted: !t.isCompleted } as ITodo;
+          return newTodo;
         }
-        return t as ITodo;
+
+        return { ...t };
       }),
     }));
   },
