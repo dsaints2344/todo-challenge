@@ -32,7 +32,12 @@ export const TodoItem = () => {
                 isChecked={t.isCompleted}
               >
                 <Box ps={4}>
-                  <Text>{t.description}</Text>
+                  <Text
+                    color={t.isCompleted ? "GrayText" : "black"}
+                    as={t.isCompleted ? "s" : undefined}
+                  >
+                    {t.description}
+                  </Text>
                 </Box>
               </Checkbox>
               <Spacer />
@@ -47,7 +52,7 @@ export const TodoItem = () => {
               )}
             </Flex>
             {i < todos.length - 1 ? (
-              <Divider width="55.2vh" orientation="horizontal" />
+              <Divider width="95%" orientation="horizontal" />
             ) : null}
           </Box>
         );
