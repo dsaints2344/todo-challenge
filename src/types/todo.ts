@@ -2,7 +2,7 @@ export interface ITodo {
   id: string;
   description: string;
   creationDate: Date;
-  isCompleted?: boolean;
+  isCompleted: boolean;
 }
 
 export interface ITodos {
