@@ -1,4 +1,4 @@
-import { Center, Box, VStack } from "@chakra-ui/react";
+import { Center, Box } from "@chakra-ui/react";
 import { todoStore } from "../stores/todo-store";
 import { NoTodosFound } from "./no-todos-found";
 import { TodoItem } from "./todo-item";

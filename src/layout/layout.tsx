@@ -1,6 +1,6 @@
-import TodoBackground from '../components/todo-background';
-import { ReactNode } from 'react';
-import { Box } from '@chakra-ui/react';
+import TodoBackground from "../components/todo-background";
+import { ReactNode } from "react";
+import { Box } from "@chakra-ui/react";
 type Props = {
   children?: ReactNode;
 };
