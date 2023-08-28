@@ -12,9 +12,9 @@ import { CloseIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
 export const TodoItem = () => {
-  const { todos, toogleCompleteTodo } = todoStore();
-
+  const { todos, toogleCompleteTodo, deleteTodo } = todoStore();
   const [idForHover, setIdForHover] = useState<string>("");
+
   return (
     <Box ms={3}>
       {todos.map((t, i) => {
@@ -44,6 +44,7 @@ export const TodoItem = () => {
               {idForHover === t.id && (
                 <Box w="20%" pt="1%">
                   <IconButton
+                    onClick={() => deleteTodo(t.id)}
                     variant="unstyled"
                     aria-label="Delete Todo item"
                     icon={<CloseIcon />}
