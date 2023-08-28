@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { ITodo, ITodoStore } from "../types/todo";
 import { v4 as uuidv4 } from "uuid";
-export const todoStore = create<ITodoStore>((set) => ({
+export const todoStore = create<ITodoStore>((set, get) => ({
   todos: [],
   addTodo: (description: string) => {
     set((state) => ({
@@ -35,5 +35,17 @@ export const todoStore = create<ITodoStore>((set) => ({
         return { ...t };
       }),
     }));
+  },
+
+  deleteTodo: (id: string) => {
+    set(({ todos }) => ({
+      todos: todos.filter((item) => item.id !== id),
+    }));
+  },
+  getCompletedTodos: () => {
+    return get().todos.filter((item) => item.isCompleted);
+  },
+  getActiveTodos: () => {
+    return get().todos.filter((item) => !item.isCompleted);
   },
 }));
