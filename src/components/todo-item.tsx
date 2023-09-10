@@ -6,13 +6,15 @@ import {
   Spacer,
   Flex,
   IconButton,
+  Button,
+  HStack,
 } from "@chakra-ui/react";
 import { todoStore } from "../stores/todo-store";
 import { CloseIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
 export const TodoItem = () => {
-  const { todos, toogleCompleteTodo, deleteTodo } = todoStore();
+  const { todos, toogleCompleteTodo, deleteTodo, activeTodos } = todoStore();
   const [idForHover, setIdForHover] = useState<string>("");
 
   return (
@@ -58,6 +60,14 @@ export const TodoItem = () => {
           </Box>
         );
       })}
+      <Divider width="95%" orientation="horizontal" />
+      <HStack>
+        <Text>{activeTodos.length} items left</Text>
+        <Spacer />
+        <Button variant="ghost">All</Button>
+        <Button variant="ghost">Active</Button>
+        <Button variant="ghost">Completed</Button>
+      </HStack>
     </Box>
   );
 };

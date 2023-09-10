@@ -14,6 +14,9 @@ export interface ITodoStore extends ITodos {
   removeTodo: (id: string) => void;
   toogleCompleteTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
-  getCompletedTodos: () => ITodo[];
-  getActiveTodos: () => ITodo[];
+}
+
+export interface IComputedTodoStore {
+  activeTodos: ITodo[];
+  completedTodos: ITodo[];
 }
