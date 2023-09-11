@@ -47,7 +47,7 @@ const TodoBackground = ({ children }: Props) => {
             right="0vh"
             position="absolute"
             top="25vh"
-            w="60vh"
+            w="66vh"
             ms="auto"
             me="auto"
           >
