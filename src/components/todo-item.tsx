@@ -11,15 +11,46 @@ import {
 } from "@chakra-ui/react";
 import { todoStore } from "../stores/todo-store";
 import { CloseIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { ITodo } from "../types/todo";
+
+type TodosMap = {
+  [key: string]: ITodo[];
+};
 
 export const TodoItem = () => {
-  const { todos, toogleCompleteTodo, deleteTodo, activeTodos } = todoStore();
+  const {
+    todos,
+    toogleCompleteTodo,
+    deleteTodo,
+    activeTodos,
+    completedTodos,
+    clearCompletedTodos,
+  } = todoStore();
   const [idForHover, setIdForHover] = useState<string>("");
+  const [todosToDisplay, setTodosToDisplay] = useState<ITodo[]>(todos);
+
+  const todosByType: TodosMap = {
+    all: todos,
+    active: activeTodos,
+    completed: completedTodos,
+  };
+
+  const handleTodosToDisplay = (id?: string) => {
+    if (id) {
+      setTodosToDisplay(todosByType[id]);
+    } else {
+      setTodosToDisplay(todos);
+    }
+  };
+
+  useEffect(() => {
+    setTodosToDisplay(todos);
+  }, [todos]);
 
   return (
     <Box ms={3}>
-      {todos.map((t, i) => {
+      {todosToDisplay.map((t, i) => {
         return (
           <Box key={t.id}>
             <Flex
@@ -64,9 +95,32 @@ export const TodoItem = () => {
       <HStack>
         <Text>{activeTodos.length} items left</Text>
         <Spacer />
-        <Button variant="ghost">All</Button>
-        <Button variant="ghost">Active</Button>
-        <Button variant="ghost">Completed</Button>
+        <Button
+          variant="ghost"
+          value="all"
+          onClick={(e) => handleTodosToDisplay(e.currentTarget.value)}
+        >
+          All
+        </Button>
+        <Button
+          value="active"
+          variant="ghost"
+          onClick={(e) => handleTodosToDisplay(e.currentTarget.value)}
+        >
+          Active
+        </Button>
+        <Button
+          value="completed"
+          variant="ghost"
+          onClick={(e) => handleTodosToDisplay(e.currentTarget.value)}
+        >
+          Completed
+        </Button>
+        <Spacer />
+        <Button variant="ghost" onClick={clearCompletedTodos}>
+          {" "}
+          Clear completed todos
+        </Button>
       </HStack>
     </Box>
   );

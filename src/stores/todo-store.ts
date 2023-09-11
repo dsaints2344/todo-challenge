@@ -51,6 +51,12 @@ export const todoStore = create<ITodoStore>()(
           todos: todos.filter((item) => item.id !== id),
         }));
       },
+
+      clearCompletedTodos: () => {
+        set(() => ({
+          todos: [],
+        }));
+      },
     }),
     computedState
   )
