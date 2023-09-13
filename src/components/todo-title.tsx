@@ -1,11 +1,13 @@
 import { MoonIcon } from "@chakra-ui/icons";
-import { HStack, IconButton, Text } from "@chakra-ui/react";
+import { HStack, IconButton, Text, useColorMode } from "@chakra-ui/react";
 
 type Props = {
   isMobile?: boolean;
 };
 
 export const TodoTitle = ({ isMobile }: Props) => {
+  const { toggleColorMode } = useColorMode();
+
   return (
     <HStack
       h={isMobile ? "90%" : undefined}
@@ -19,7 +21,11 @@ export const TodoTitle = ({ isMobile }: Props) => {
         TODO
       </Text>
 
-      <IconButton aria-label="dark-mode" icon={<MoonIcon />} />
+      <IconButton
+        aria-label="dark-mode"
+        icon={<MoonIcon />}
+        onClick={toggleColorMode}
+      />
     </HStack>
   );
 };
