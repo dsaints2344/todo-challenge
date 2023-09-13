@@ -117,7 +117,11 @@ export const TodoItem = () => {
           Completed
         </Button>
         <Spacer />
-        <Button variant="ghost" onClick={clearCompletedTodos}>
+        <Button
+          variant="ghost"
+          isDisabled={completedTodos.length === 0}
+          onClick={clearCompletedTodos}
+        >
           {" "}
           Clear completed todos
         </Button>
