@@ -1,15 +1,15 @@
-import { Center, Box } from "@chakra-ui/react";
+import { Center, Box, useColorMode } from "@chakra-ui/react";
 import { todoStore } from "../stores/todo-store";
 import { NoTodosFound } from "./no-todos-found";
 import { TodoItem } from "./todo-item";
 
 const ItemList = () => {
   const { todos } = todoStore();
-
+  const { colorMode } = useColorMode();
   return (
     <Center textAlign="center">
       <Box
-        backgroundColor="white"
+        backgroundColor={colorMode === "dark" ? "black" : "white"}
         boxShadow="xl"
         rounded="base"
         w="95%"

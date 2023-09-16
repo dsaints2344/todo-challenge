@@ -8,6 +8,7 @@ import {
   IconButton,
   Button,
   HStack,
+  useColorMode,
 } from "@chakra-ui/react";
 import { todoStore } from "../stores/todo-store";
 import { CloseIcon } from "@chakra-ui/icons";
@@ -29,6 +30,7 @@ export const TodoItem = () => {
   } = todoStore();
   const [idForHover, setIdForHover] = useState<string>("");
   const [todosToDisplay, setTodosToDisplay] = useState<ITodo[]>(todos);
+  const { colorMode } = useColorMode();
 
   const todosByType: TodosMap = {
     all: todos,
@@ -66,7 +68,11 @@ export const TodoItem = () => {
               >
                 <Box ps={4}>
                   <Text
-                    color={t.isCompleted ? "GrayText" : "black"}
+                    color={
+                      t.isCompleted || colorMode === "dark"
+                        ? "GrayText"
+                        : "black"
+                    }
                     as={t.isCompleted ? "s" : undefined}
                   >
                     {t.description}
