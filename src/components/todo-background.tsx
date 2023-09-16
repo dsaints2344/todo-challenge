@@ -2,7 +2,7 @@ import bgDesktopDark from "../assets/bg-desktop-dark.jpg";
 import bgMobileDark from "../assets/bg-mobile-dark.jpg";
 import bgDesktopLight from "../assets/bg-desktop-light.jpg";
 import bgMobileLight from "../assets/bg-mobile-light.jpg";
-import { Show, Box, Flex } from "@chakra-ui/react";
+import { Show, Box, Flex, useColorMode } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { TodoTitle } from "./todo-title";
 
@@ -11,11 +11,13 @@ type Props = {
 };
 
 const TodoBackground = ({ children }: Props) => {
+  const {colorMode} = useColorMode();
+
   return (
     <>
       <Show below="sm">
         <Flex
-          backgroundImage={bgMobileLight}
+          backgroundImage={colorMode === "dark" ? bgMobileDark : bgMobileLight}
           direction="column"
           alignItems="center"
           backgroundRepeat="round"
@@ -37,7 +39,7 @@ const TodoBackground = ({ children }: Props) => {
       </Show>
       <Show above="sm">
         <Flex
-          backgroundImage={bgDesktopLight}
+          backgroundImage={colorMode === "dark" ? bgDesktopDark : bgDesktopLight}
           backgroundRepeat="round"
           h="40vh"
         >
